@@ -3,8 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_restful import Api, Resource
 
+import sys
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bea.db'
+
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 api = Api(app)
