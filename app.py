@@ -6,7 +6,13 @@ from flask_restful import Api, Resource
 import sys
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bea.db'
+uri = 'sqlite:///bea.db'
+
+if sys.argv[1]:
+    path = sys.argv[1]
+    uri = 'sqlite:///{}'.format(path)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
